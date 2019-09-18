@@ -1,0 +1,77 @@
+{% extends "layouts/basic.html" %}
+{% block body %}
+{% include "pages/header.html" %}
+
+<div>
+  <div id='letter-selection'>
+    <h2>Please select which letter you want to draw</h2>
+    <ul id='letters' class='letter-list'></ul>
+  </div>
+
+  <div id='canvas-board' style='display: none'>
+    <canvas id='draw' width='300' height='300'></canvas>
+
+    <div style='margin-top: 10px;'>
+      <button id='canvas-submit'>Submit</button>
+      <button id='canvas-clear'>Clear</button>
+      <button id='canvas-back'>Back</button>
+    </div>
+  </div>
+
+  <script src='/js/canvas.js'></script>
+  
+  <script>
+    // Register the handwriting board
+    const board = new Handwriting(document.getElementById('draw'));
+
+    // Register button events
+    document.getElementById('canvas-clear').addEventListener('click', function() {
+      board.clear();
+    })
+
+    document.getElementById('canvas-submit').addEventListener('click', function() {
+      board.clear();
+      toggleCanvas(false);
+    })
+
+    document.getElementById('canvas-back').addEventListener('click', function() {
+      board.clear();
+      toggleCanvas(false);
+    })
+
+    function toggleCanvas(hide) {
+      if (hide) {
+        // Prevent body from bouncing when using in mobile device
+        document.body.classList.add('no-bouncing');
+        document.getElementById('canvas-board').style.display = 'block';
+        document.getElementById('letter-selection').style.display = 'none';
+      } else {
+        document.body.classList.remove('no-bouncing');
+        document.getElementById('canvas-board').style.display = 'none';
+        document.getElementById('letter-selection').style.display = 'block';
+      }
+    }
+
+    function setupCharacter() {
+      // Create character letter
+      const letterList = document.getElementById('letters')
+      const khmerStartingCharCode = 6016;
+      for(let i = 0; i < 35; i++) {
+        const letterString = String.fromCharCode(khmerStartingCharCode + i);
+        const letterItem = document.createElement('li');
+        letterItem.textContent = letterString;
+        letterList.appendChild(letterItem);
+        
+        letterItem.addEventListener('click', () => {
+          toggleCanvas(true);
+          document.getElementById('canvas-submit').textContent = `Submit (${letterString})`;
+        })
+      }
+    }
+
+    setupCharacter();
+  </script>
+</div>
+
+{% include "pages/footer.html" %}
+{% endblock %}
