@@ -1,0 +1,22 @@
+@import './theme/colors.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 1200px;
+  color: $primary_color;
+  font-family: 'Muli', sans-serif;
+}
+
+::placeholder {
+  color: gray;
+}
+
+@media (min-resolution: 2dppx) {
+  .container {
+    background-image: url('/img/Slash_logo_black.png');
+    background-size: cover;
+    height: 800px;
+    width: 1200px;
+  }
+}

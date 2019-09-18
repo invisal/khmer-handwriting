@@ -1,0 +1,27 @@
+{% extends "layouts/basic.html" %}
+
+
+
+{% block body %}
+{% include "pages/header.html" %}
+
+
+<section>
+  <div class="container" >
+    <div class="image"></div>
+    <img src="img/Slash_logo_black.png"/>
+
+    <button type="button" onclick="baseLib.showDate()">
+    Click me to display Date and Time.</button>
+
+    <p id="demo"></p>
+  </div>
+</section>
+
+{% include "pages/footer.html" %}
+
+<script>
+
+</script>
+
+{% endblock %}
