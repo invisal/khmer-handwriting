@@ -2,8 +2,6 @@
 
 Hi! I am preparing this **Repo** because I would like all of you to getting start project quickly. You can have a choice to choose for and extend based on your need. I prepared with 3 different types.  
 - **master** branch is the raw folder structure that can use to build web with template engine *numjuck* and build simple api. 
-- **reactjs** branch is the extension of master branch that can build a website with *reactjs* and *redux*.  
-- **reactjs-hook** branch is the extension of the master branch that can build a website with reactjs and *react-hook*. 
 
 # Getting started
 
@@ -58,15 +56,15 @@ docker run -p 3000:3000 -d base:v0.1
 
 ```
 # Build docker tag against ECR
-docker build -t accountid.dkr.ecr.eu-central-1.amazonaws.com/base:v0.1 .
+docker build -t 443536660676.dkr.ecr.eu-central-1.amazonaws.com/aksor:v0.0.1 .
 # run docker in local
 eb local run
 # login ECR, you can view command in ERC 
 $(aws ecr get-login --no-include-email --region eu-central-1)
 # push docker image to eb
-docker push accountid.dkr.ecr.eu-central-1.amazonaws.com/base:v0.1
+docker push 443536660676.dkr.ecr.eu-central-1.amazonaws.com/aksor:v0.0.1
 # deploy to eb with label
-eb deploy -l "v0.1"
+eb deploy -l "v0.0.1"
 # remote ssh to eb instance
 eb ssh
 ```
@@ -86,15 +84,10 @@ docker build --no-cache -t base:v0.1 .
 
 you can note down all the problem and answer during developing. so we can then tell to another developer. 
 
-> **Note:** 
-> cannot throw exception out of callback, need to use **Promise.reject()**.
-> use for(const element of elements) for loop async
-
 
 # Version Release Notes
 
 below is the change of **Version**
 
-### v0.1
-- Prepare folder structure
-- fixed two character appear
+### v0.0.1
+- canvas
