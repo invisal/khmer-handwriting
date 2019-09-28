@@ -5,6 +5,7 @@ import logger from 'morgan';
 import cors from 'cors';
 import path from 'path';
 import nunjucks from 'nunjucks';
+import multer from 'multer';
 // const chalk = require('chalk');
 import chalk from 'chalk';
 import router from './routes';
@@ -24,7 +25,9 @@ app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(multer({
+  dest: `${__dirname}/storages/tmp`,
+}).array('files', 12));
 app.use((req, res, next) => {
   res.locals.user = req.user;
   next();

@@ -2,7 +2,6 @@ import statusCode from '../services/helper/status.code';
 
 export default {
   before(req, res, next) {
-    console.log('before all');
     next();
   },
   routeNotFound(req, res) {
